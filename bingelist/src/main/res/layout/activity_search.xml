@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.aidanvii.mybingelist.search.SearchListViewModel" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="false">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/appbar_height"
+                android:background="@color/colorPrimaryDark"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <AutoCompleteTextView
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:hint="@string/enter_genre"
+                    android:showSuggestionsOnLongClick="@{true}"
+                    android:suggestions="@{viewModel.genres}"
+                    android:text="@={viewModel.searchQuery}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/favouritesButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/favouritesButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:background="@android:color/transparent"
+                    android:onClick="@{viewModel::goToFavourites}"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_favourites"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onRefresh="@{viewModel::refresh}"
+            android:refreshing="@{viewModel.showLoader}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:binder="@{viewModel.binder}"
+                android:items="@{viewModel.movieAdapterItems}" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingStart="70dp"
+            android:paddingEnd="70dp"
+            android:text="@{viewModel.hint}"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            tools:text="@string/hint_prompt" />
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

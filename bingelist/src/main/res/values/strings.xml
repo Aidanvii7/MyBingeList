@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BingeList</string>
+
+    <string name="enter_genre">Enter genre</string>
+    <string name="hint_empty" />
+    <string name="hint_prompt">Please enter a genre to find movies e.g. Action</string>
+    <string name="hint_no_results">¯\\_(ツ)_/¯</string>
+    <string name="hint_error">Something went wrong :(</string>
+</resources>

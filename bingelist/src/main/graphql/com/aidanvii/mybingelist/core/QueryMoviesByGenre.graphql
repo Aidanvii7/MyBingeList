@@ -1,0 +1,12 @@
+query allMoviesByGenre($genre: String!, $rating: Float) {
+   allMovies(genre: $genre, rating: $rating) {
+     movies {
+     	id,
+     	rating,
+     	popularity,
+     	poster(size: MEDIUM) {
+       	 fullPath
+     	}
+     }
+   }
+ }

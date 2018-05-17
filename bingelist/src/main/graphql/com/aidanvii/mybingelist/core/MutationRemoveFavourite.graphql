@@ -1,0 +1,5 @@
+mutation RemoveFavourite($movieId: Int!) {
+  removeFavorite(movieId: $movieId) {
+    title
+  }
+}

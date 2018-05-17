@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.aidanvii.mybingelist.core.MovieViewModel" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@android:color/transparent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--
+            The aspect ratio is precomputed based on the aspect ratio of the poster images
+            Ideally the API should provide image aspect ratio with the URL so the view can be pre-measured.
+            Yigit explains: https://academy.realm.io/posts/360andev-yigit-boyar-pro-recyclerview-android-ui-java/
+            -->
+            <com.aidanvii.mybingelist.core.customviews.AspectRatioAppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:aspectRatio="@{0.686159844054581f}"
+                android:background="@android:color/transparent"
+                android:imageUrl="@{viewModel.imageUrl}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{viewModel::onBookmarkClicked}"
+                android:src="@{viewModel.isFavourite ? @drawable/ic_remove_favourite : @drawable/ic_add_favourite}" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>

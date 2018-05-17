@@ -1,0 +1,11 @@
+query favourites {
+  favorites {
+    id,
+    title,
+    rating,
+    popularity,
+    poster(size: MEDIUM) {
+     fullPath
+    }
+  }
+}

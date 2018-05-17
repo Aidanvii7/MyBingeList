@@ -1,0 +1,5 @@
+mutation AddFavourite($movieId: Int!) {
+  addFavorite(movieId: $movieId) {
+    title
+  }
+}
