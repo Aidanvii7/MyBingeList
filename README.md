@@ -10,7 +10,3 @@ Tech Stack
 - [RxJava 2](https://github.com/ReactiveX/RxJava)
 - [JUnit 5 (for Android)](https://github.com/mannodermaus/android-junit5)
 - [Kluent](https://github.com/MarkusAmshove/Kluent)
-
-Features
-==
-TBD
